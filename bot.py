@@ -146,6 +146,7 @@ async def SearchUrl(link: str):
     link_guild_id = int(split[4])
     link_channel_id = int(split[5])
     link_message_id = int(split[6])
+    link_message = "NONE"
     link_guild = client.get_guild(link_guild_id)
     if link_guild is not None:
         link_channel = link_guild.get_channel(link_channel_id)
@@ -153,7 +154,7 @@ async def SearchUrl(link: str):
             try:
                 link_message = await link_channel.fetch_message(link_message_id)
             except (discord.errors.NotFound, discord.errors.Forbidden, discord.errors.HTTPException):
-                link_message = "NONE"
+                pass
     return link_message
 
 

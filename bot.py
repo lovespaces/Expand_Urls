@@ -99,7 +99,7 @@ class ShowPhoto(discord.ui.DynamicItem[discord.ui.Button], template=r"(?P<guild>
 
 
 # もし展開先のメッセージに埋め込みがあった場合、このボットではその埋め込みを表示するようにするボタンを付けるようにしています。
-class ShowEmbed(discord.ui.DynamicItem[discord.ui.Button], template=r"(?P<guild>[0-9]+)_(?P<channel>[0-9]+)_(?P<message>[0-9]+)"):
+class ShowEmbed(discord.ui.DynamicItem[discord.ui.Button], template=r"(?P<guild>[0-9]+):(?P<channel>[0-9]+):(?P<message>[0-9]+)"):
     """展開先のメッセージにある埋め込みを見れるようにするボタンの処理・作成をします。"""
 
     def __init__(self, link_guild_id: str, link_channel_id: str, link_message_id: str):
@@ -108,8 +108,8 @@ class ShowEmbed(discord.ui.DynamicItem[discord.ui.Button], template=r"(?P<guild>
                 emoji="📦",
                 style=discord.ButtonStyle.grey,
                 custom_id=(
-                    link_guild_id + "_"
-                    + link_channel_id + "_"
+                    link_guild_id + ":"
+                    + link_channel_id + ":"
                     + link_message_id
                 )
             )
@@ -290,7 +290,7 @@ async def open_message_url(interaction: discord.Interaction, message: discord.Me
         is_disabled = True
         placeholder = "他にメッセージリンクがありません"
     else:
-        embed.description = embed.description + "\n \nメッセージ内にリンクが複数あります。\nほかのリンクの展開は下のセレクトから展開が可能です。"
+        embed.description = embed.description + "\n \nメッセージ内にリンクが複数あります。\nほかのリンクの展開は下のセレクトから可能です。"
     for link in matches[1:]:
         if len(link) == 27:
             break

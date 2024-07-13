@@ -15,7 +15,7 @@ Discordにて送信されたメッセージURLを展開し、Ephemeralで展開�
 - 送信時間
 - メッセージ内容
 
-<img src="https://i.imgur.com/x1Ze3Hx.png" width="437" height="271">
+<img src="https://i.imgur.com/x1Ze3Hx.png" width="487" height="272">
 
 また、画像・埋め込みがある場合は
 「`このメッセージには画像/埋め込みが存在しています。
